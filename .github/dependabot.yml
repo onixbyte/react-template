@@ -12,5 +12,6 @@ updates:
     commit-message:
       prefix: "chore: "
     ignore:
-    - dependency-name: "@types/node"
-      versions: ["< 20.0.0", "> 20.x.x"]
+      - dependency-name: "@types/node"
+        # For Node types, ignore all major updates
+        update-types: ["version-update:semver-major"]
