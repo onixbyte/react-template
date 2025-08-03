@@ -38,7 +38,7 @@ export default tseslint.config(
       "@typescript-eslint/no-unused-vars": 0
     },
     settings: {
-      react: { version: "18.3" },
+      react: { version: "19.1" },
     },
   },
 )
