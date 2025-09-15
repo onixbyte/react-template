@@ -29,8 +29,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-], {
-  basename: process.env.NODE_ENV === 'production' ? '/react-template' : '/'
-})
+])
 
 export default router
