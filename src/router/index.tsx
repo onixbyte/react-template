@@ -9,28 +9,31 @@ import ContactPage from "@/page/contact"
  * Main application router configuration using React Router v6.
  * Defines all routes and their corresponding components.
  */
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          index: true,
+          element: <HomePage />,
+        },
+        {
+          path: "about",
+          element: <AboutPage />,
+        },
+        {
+          path: "contact",
+          element: <ContactPage />,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: "about",
-        element: <AboutPage />,
-      },
-      {
-        path: "contact",
-        element: <ContactPage />,
-      },
-    ],
-  },
-], {
-  basename: process.env.NODE_ENV === 'production' ? '/react-template' : '/'
-})
+    basename: "/",
+  }
+)
 
 export default router
