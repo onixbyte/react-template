@@ -1,21 +1,19 @@
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import { Provider } from "react-redux"
-import { BrowserRouter, Route, Routes } from "react-router"
+import { RouterProvider } from "react-router-dom"
 import store from "@/store"
+import router from "@/router"
 import "./index.css"
-import ProtectedRoute from "@/components/protected-route"
 
+/**
+ * Main application entry point.
+ * Sets up the React app with Redux store and React Router.
+ */
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<ProtectedRoute />}>
-            <Route path="/" element={null}></Route>
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </Provider>
   </StrictMode>,
 )
