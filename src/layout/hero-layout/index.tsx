@@ -1,16 +1,16 @@
 import { Outlet, Link } from "react-router-dom"
-import { useMemo, useState } from "react"
-import moment from "moment"
+import { useMemo } from "react"
+import dayjs from "dayjs"
 
 /**
  * Main application component that serves as the root layout.
  * Uses React Router's Outlet to render child routes.
  */
-export default function App() {
-  const today = useMemo(() => moment(), [])
+export default function HeroLayout() {
+  const today = useMemo(() => dayjs(), [])
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Navigation Header */}
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,7 +45,7 @@ export default function App() {
       </header>
 
       {/* Main Content Area */}
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 flex-grow">
         <div className="px-4 py-6 sm:px-0">
           <Outlet />
         </div>

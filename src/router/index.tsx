@@ -1,9 +1,16 @@
+import { ComponentType } from "react"
 import { createBrowserRouter } from "react-router-dom"
-import App from "@/App"
 import ErrorPage from "@/components/error-page"
-import HomePage from "@/page/home"
-import AboutPage from "@/page/about"
-import ContactPage from "@/page/contact"
+import HeroLayout from "@/layout/hero-layout"
+
+function lazy<T extends { default: ComponentType<unknown> }>(importer: () => Promise<T>) {
+  return async () => {
+    const module = await importer()
+    return {
+      Component: module.default,
+    }
+  }
+}
 
 /**
  * Main application router configuration using React Router v6.
@@ -13,20 +20,20 @@ const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <App />,
+      element: <HeroLayout />,
       errorElement: <ErrorPage />,
       children: [
         {
           index: true,
-          element: <HomePage />,
+          lazy: lazy(() => import("@/page/home")),
         },
         {
           path: "about",
-          element: <AboutPage />,
+          lazy: lazy(() => import("@/page/about")),
         },
         {
           path: "contact",
-          element: <ContactPage />,
+          lazy: lazy(() => import("@/page/contact")),
         },
       ],
     },
