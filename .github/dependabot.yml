@@ -5,13 +5,23 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
       interval: "weekly"
     commit-message:
       prefix: "chore: "
+
+    groups:
+      dependency-updates:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+
     ignore:
       - dependency-name: "@types/node"
-        # For Node types, ignore all major updates
         update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
