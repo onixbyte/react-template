@@ -45,7 +45,7 @@ export default function HeroLayout() {
       </header>
 
       {/* Main Content Area */}
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 flex-grow">
+      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 grow">
         <div className="px-4 py-6 sm:px-0">
           <Outlet />
         </div>

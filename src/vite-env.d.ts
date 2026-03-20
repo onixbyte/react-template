@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 interface ImportMetaEnv {
-  // todo add env properties here
+  readonly VITE_REDUX_STORAGE: "local" | "session"
 }
 
 interface ImportMeta {

@@ -10,9 +10,10 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist"
-import storage from "redux-persist/lib/storage/session" // use session storage
-// import storage from "redux-persist/lib/storage" // use local storage
+import createWebStorage from "redux-persist/es/storage/createWebStorage"
 import authReducer from "./auth-slice"
+
+const storage = createWebStorage(import.meta.env.VITE_REDUX_STORAGE ?? "local")
 
 const persistConfig = {
   key: "root",
